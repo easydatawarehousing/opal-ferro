@@ -24,6 +24,17 @@ Or install it yourself:
 Please see the [Ferro website](https://easydatawarehousing.github.io/ferro/)
 for background information and examples.
 
+## Versioning
+Opal-Ferro follows the versioning scheme of [Opal](https://github.com/opal/opal).
+The first two parts of the version number of Ferro imply compatibility
+with the Opal version with that same number.
+So Ferro 0.10.x should be compatible with and dependant on Opal 0.10.x.
+
+## Roadmap
+Please see the development roadmap
+[here](https://github.com/easydatawarehousing/opal-ferro/wiki/Development-roadmap)
+for the current wishlist of features to be added to Ferro.
+
 ## Development
 To install this gem onto your local machine, run `bundle exec rake install`.
 To release a new version, update the version number in `version.rb`
