@@ -1,4 +1,10 @@
 # Opal-Ferro
+
+[![GitHub](http://img.shields.io/badge/github-lsegal/yard-blue.svg)](https://github.com/easydatawarehousing/opal-ferro)
+[![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://rubydoc.org/gems/opal-ferro)
+[![Gem Version](https://badge.fury.io/rb/yard.svg)](https://github.com/easydatawarehousing/opal-ferro/releases)
+[![License](http://img.shields.io/badge/license-MIT-yellowgreen.svg)](#license)
+
 Ferro is a small Ruby library on top of [Opal](http://opalrb.com/)
 that enables an object-oriented programming style for creating code
 that runs in the webbrowser.
@@ -48,6 +54,15 @@ https://github.com/easydatawarehousing/opal-ferro.
 This project is intended to be a safe, welcoming space for collaboration
 and contributors are expected to adhere to the
 [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Documentation
+Yard is used to generate documentation. In development start yard using:
+
+    yard server -r
+
+To generate documentation for publication, cd into project root and use:
+
+    yardoc
 
 ## License
 The gem is available as open source under the terms of the MIT License.

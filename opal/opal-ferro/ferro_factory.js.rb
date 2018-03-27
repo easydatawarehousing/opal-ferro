@@ -1,12 +1,25 @@
+# Create DOM elements.
 class FerroFactory
 
   attr_reader :body
 
+  # Create the factory. Do not create a factory directly, instead
+  # call the 'factory' method that is available in all Ferro classes
+  # This class attaches itself to the DOM document.body element.
+  # Any child nodes of document.body are removed.
   def initialize
     @body = `document.body`
     `while (document.body.firstChild) {document.body.removeChild(document.body.firstChild);}`
   end
 
+  # Create a DOM element.
+  #
+  # @param [String] target The Ruby class instance
+  # @param [String] type Type op DOM element to create
+  # @param [String] parent The Ruby parent element
+  # @param [Hash] options Options to pass to the element.
+  #   See FerroElementary::add_child
+  # @return [String] the DOM element
   def create_element(target, type, parent, options = {})
     # Create element
     element = `document.createElement(#{type})`
@@ -46,11 +59,19 @@ class FerroFactory
     element
   end
 
+  # Convert a Ruby classname to a dasherized name for use with CSS.
+  #
+  # @param [String] class_name The Ruby class name
+  # @return [String] CSS class name
   def dasherize(class_name)
     return class_name if class_name !~ /[A-Z_]/
     (class_name[0] + class_name[1..-1].gsub(/[A-Z]/){ |c| "-#{c}" }).downcase.gsub('_', '-')
   end
 
+  # Convert a CSS classname to a camelized Ruby class name.
+  #
+  # @param [String] class_name CSS class name
+  # @return [String] A Ruby class name
   def camelize(class_name)
     return class_name if class_name !~ /-/
     class_name.gsub(/(?:-|(\/))([a-z\d]*)/) { "#{$1}#{$2.capitalize}" }.strip

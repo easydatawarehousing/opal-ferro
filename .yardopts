@@ -1,0 +1,8 @@
+opal/**/*.rb
+lib/**/*.rb
+-
+README.md
+docs/GettingStarted.md
+CHANGELOG.md
+LICENSE.txt
+CODE_OF_CONDUCT.md

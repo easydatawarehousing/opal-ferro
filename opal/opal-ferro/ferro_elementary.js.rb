@@ -1,5 +1,10 @@
+# Module defines element creation methods and child management.
+# Note that there are no private methods in Opal. Methods that
+# should be private are marked in the docs with 'Internal method'.
 module FerroElementary
 
+  # Array of reseved names, child element should not have a name
+  # that is included in this list
   RESERVED_NAMES = %i[
     initialize factory root router page404
     creation _before_create before_create create _after_create
@@ -9,6 +14,8 @@ module FerroElementary
     add_states add_state update_state toggle_state state_active
   ]
 
+  # Create DOM element and children elements.
+  # Calls before- and after create hooks.
   def creation
     _before_create
     before_create
@@ -22,6 +29,7 @@ module FerroElementary
   def _before_create;end
   def before_create;end
 
+  # Calls the factory to create the DOM element.
   def create
     @element = factory.create_element(self, @domtype, @parent, @options) if @domtype 
   end
@@ -29,6 +37,8 @@ module FerroElementary
   def _after_create;end
   def after_create;end
 
+  # Override this method to return a Hash of styles.
+  # Hash-key is the CSS style name, hash-value is the CSS style value.
   def style;end
 
   def _stylize
@@ -44,6 +54,16 @@ module FerroElementary
 
   def cascade;end
 
+  # Add a child element.
+  #
+  # @param [String] name A unique name for the element that is not
+  #   in RESERVED_NAMES
+  # @param [String] element_class Ruby class name for the new element
+  # @param [Hash] options Options to pass to the element. Any option key
+  #   that is not recognized is set as an attribute on the DOM element.
+  #   Recognized keys are:
+  #     prepend Prepend the new element before this DOM element
+  #     content Add the value of content as a textnode to the DOM element
   def add_child(name, element_class, options = {})
     sym = symbolize(name)
     raise "Child '#{sym}' already defined" if @children.has_key?(sym)
@@ -51,24 +71,30 @@ module FerroElementary
     @children[sym] = element_class.new(self, sym, options)
   end
 
+  # Convert a string containing a variable name to a symbol.
   def symbolize(name)
     name.downcase.to_sym
   end
 
+  # Remove all child elements.
   def forget_children
     children = {}
   end
 
+  # Remove a specific child element.
+  #
+  # param [Symbol] sym The element to remove
   def remove_child(sym)
     @children.delete(sym)
   end
 
+  # Remove a DOM element.
   def destroy
     `#{parent.element}.removeChild(#{element})`
     parent.remove_child(@sym)
   end
 
-  # Getter for children
+  # Getter for children.
   def method_missing(method_name, *args, &block)
     if @children.has_key?(method_name)
       @children[method_name]
