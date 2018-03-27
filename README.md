@@ -1,8 +1,7 @@
 # Opal-Ferro
 
-[![GitHub](http://img.shields.io/badge/github-lsegal/yard-blue.svg)](https://github.com/easydatawarehousing/opal-ferro)
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://rubydoc.org/gems/opal-ferro)
-[![Gem Version](https://badge.fury.io/rb/yard.svg)](https://github.com/easydatawarehousing/opal-ferro/releases)
+[![Gem Version](https://img.shields.io/badge/gem%20version-0.10.0-blue.svg)](https://github.com/easydatawarehousing/opal-ferro/releases)
 [![License](http://img.shields.io/badge/license-MIT-yellowgreen.svg)](#license)
 
 Ferro is a small Ruby library on top of [Opal](http://opalrb.com/)
