@@ -40,7 +40,7 @@ module Ferro
       def submitted(value);end
     end
 
-    # Internal class for use with {FormSearch}.
+    # Internal class for use with {Search}.
     class SearchInput < Form::Input
 
       # Internal method.
@@ -55,7 +55,7 @@ module Ferro
       end
     end
 
-    # Internal class for use with {FormSearch}.
+    # Internal class for use with {Search}.
     class SearchSubmit < Form::Button
 
       # Internal method.
@@ -98,7 +98,7 @@ module Ferro
       end
     end
 
-    # Internal class for use with {FerroPullDown}.
+    # Internal class for use with {PullDown}.
     # This element has a state: pull-down-open
     # to define CSS rules.
     class PullDownTitle < Form::Block
@@ -109,7 +109,7 @@ module Ferro
       end
     end
 
-    # Internal class for use with {FerroPullDown}.
+    # Internal class for use with {PullDown}.
     class PullDownItems < BaseElement
 
       # Internal method.

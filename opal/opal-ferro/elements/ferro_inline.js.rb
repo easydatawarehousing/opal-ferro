@@ -72,7 +72,7 @@ module Ferro
 
     # Creates an inline element.
     # In the DOM creates a: <li>.
-    # To be used together with {ElementList}.
+    # To be used together with {List}.
     class ListItem < BaseElement
 
       # Internal method.
