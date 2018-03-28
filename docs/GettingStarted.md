@@ -33,12 +33,12 @@ Getter methods are automatically added by Ferro for easy access to instance vari
 
 Each object in the MOM inherits from a Ferro class.
 Which Ferro class you use determines what type of DOM element will be created.
-All Ferro classes inherit from one base class: FerroElement.
+All Ferro classes inherit from one base class: Ferro::BaseElement.
 For most DOM elements in the html specs there is a corresponding Ferro class.
 For instance if you need a html5 `<header>` element you would create a class that inherits
-from FerroElementHeader.  
+from Ferro::Component::Header.  
 Other html elements have a more abstract counterpart:
-all text elements (`<p>`, `<h1>` .. `<h6>`) have one Ferro class `FerroElementText`.
+all text elements (`<p>`, `<h1>` .. `<h6>`) have one Ferro class `Ferro::Element::Text`.
 The size of the text element is an option when you instantiate the object.
 
 <a name="mom"></a>
@@ -52,7 +52,7 @@ The Document instance will attach itself in the DOM to
 
 In the example below, the Document instance will create one child element.
 
-    class Document < FerroDocument
+    class Document < Ferro::Document
 
       # The cascade method is called after the Document
       # has been created and is ready to create child
@@ -80,12 +80,12 @@ Everyting else is Ruby code.
 ## Adding elements
 
 Let's look at a very simple example. We will define a small component
-with a title and a button. The button should change the title text when clicked.  
+with a title and a button. The button should change the title text when clicked.
 
-    class Demo < FerroElementComponent
+    class Demo < Ferro::Component::Base
       def cascade
         # Add a title
-        add_child :title, FerroElementText, size: 4, content: 'Title'
+        add_child :title, Ferro::Element::Text, size: 4, content: 'Title'
 
         # Add a button
         add_child :btn, DemoButton, content: 'Click me'
@@ -98,7 +98,7 @@ with a title and a button. The button should change the title text when clicked.
       end
     end
 
-    class DemoButton < FerroFormButton
+    class DemoButton < Ferro::Form::Button
       def clicked
         # Every element knows its parent
         parent.rotate_title
@@ -110,7 +110,7 @@ which should look more familiar to a Ruby programmer:
 
     class Demo
       def initialize
-        @title = FerroElementText.new(size: 4, content: 'Title')
+        @title = Ferro::Element::Text.new(size: 4, content: 'Title')
         @btn   = DemoButton.new(content: 'Click me')
       end
     end
@@ -133,7 +133,7 @@ is created. The cascade hook is called when the object is ready
 to create child objects.  
 In this example most of the action happens in the _cascade_ method.
 
-By inheriting from _FerroFormButton_, _DemoButton_ has access
+By inheriting from _Ferro::Form::Button_, _DemoButton_ has access
 to the click event handler. After a click occurred, it signals
 its parent (_Demo_) to rotate the title text.
 
@@ -165,7 +165,7 @@ The created elements still need some styling. Ferro uses a handy
 naming convention: CSS classnames match Ruby classnames.
 For example:
 
-    class DemoButton < FerroFormButton
+    class DemoButton < Ferro::Form::Button
     end
 
 When we create this button in the MOM, its DOM counterpart receives

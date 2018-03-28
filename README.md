@@ -1,7 +1,7 @@
 # Opal-Ferro
 
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://rubydoc.org/gems/opal-ferro)
-[![Gem Version](https://img.shields.io/badge/gem%20version-0.10.0-blue.svg)](https://github.com/easydatawarehousing/opal-ferro/releases)
+[![Gem Version](https://img.shields.io/badge/gem%20version-0.10.1-blue.svg)](https://github.com/easydatawarehousing/opal-ferro/releases)
 [![License](http://img.shields.io/badge/license-MIT-yellowgreen.svg)](#license)
 
 Ferro is a small Ruby library on top of [Opal](http://opalrb.com/)
@@ -58,6 +58,10 @@ and contributors are expected to adhere to the
 Yard is used to generate documentation. In development start yard using:
 
     yard server -r
+
+Use this to list all undocumented items:
+
+    yard stats --list-undoc
 
 To generate documentation for publication, cd into project root and use:
 
