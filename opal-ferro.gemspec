@@ -12,6 +12,12 @@ Gem::Specification.new do |s|
   s.summary       = %q{Simplifying web-development: no more html, just beautiful and simple Ruby code.}
   s.description   = %q{Ferro is a small Ruby library on top of Opal that enables an object-oriented programming style for creating code that runs in the webbrowser. No more distractions like HTML and searching for DOM elements, just beautiful and simple Ruby code. Front-End-Ruby-ROcks!}
   s.homepage      = 'https://github.com/easydatawarehousing/opal-ferro'
+  s.metadata    = {
+    "homepage_uri"    => "https://github.com/easydatawarehousing/opal-ferro/",
+    "changelog_uri"   => "https://github.com/easydatawarehousing/opal-ferro/blob/master/CHANGELOG.md",
+    "source_code_uri" => "https://github.com/easydatawarehousing/opal-ferro/",
+    "bug_tracker_uri" => "https://github.com/easydatawarehousing/opal-ferro/issues",
+  }
   s.license       = 'MIT'
 
   s.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
