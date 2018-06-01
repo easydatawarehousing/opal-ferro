@@ -194,7 +194,7 @@ Add the compositor like this:
 
     class Document < Ferro::Document
       def before_create
-        @compositor = AppCompositor.new :dark
+        @compositor = MyCompositor.new :dark
       end
     end
 
