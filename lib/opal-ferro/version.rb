@@ -8,6 +8,6 @@ module Opal
     # compatibility with the Opal version with that same number.
     # So Ferro 0.10.x should be compatible with and dependant
     # on Opal 0.10.x.
-    VERSION = "0.10.1"
+    VERSION = "0.10.2"
   end
 end

@@ -1,3 +1,10 @@
+# 0.10.2 - June 1, 2018
+
+[0.10.2]: https://github.com/easydatawarehousing/opal-ferro/compare/v0.10.1...v0.10.2
+
+- Added the style compositor to map Ruby classnames to CSS classnames
+- Fixed: don't add clicks on an anchor to the browser history when the href is empty
+
 # 0.10.1 - March 31, 2018
 
 - Added documentation (using Yard)
