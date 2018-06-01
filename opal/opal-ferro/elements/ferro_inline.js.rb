@@ -26,6 +26,8 @@ module Ferro
     # elements. Leave option blank to create <ul> elements.
     class List < BaseElement
 
+      attr_reader :items
+
       # Internal method.
       def _before_create
         @domtype = @options.has_key?(:type) ? :ol : :ul
@@ -98,11 +100,22 @@ module Ferro
       def _before_create
         @domtype = :a
         @href = @options[:href]
+        @push = @href.to_s != ''
       end
 
       # Internal method.
       def _after_create
-        `#{@element}.addEventListener("click",function(e){e.preventDefault();history.pushState(null,null,#{@href});#{clicked};document.activeElement.blur();})`
+        `#{@element}.addEventListener("click", function(e) {
+          e.preventDefault();
+
+          if (#{@push}) {
+            history.pushState(null, null, #{@href});
+          }
+
+          #{clicked};
+
+          document.activeElement.blur();
+        })`
       end
 
       # Set a new html reference for this item.
