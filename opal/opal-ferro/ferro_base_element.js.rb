@@ -86,7 +86,11 @@ module Ferro
     # @param [String] state The state name to add to the element
     # @param [value] value The initial enabled/disabled state value
     def add_state(state, value = false)
-      @states[state] = [factory.dasherize(state), value]
+      @states[state] = [
+        factory.composite_state(self.class.name, state),
+        value
+      ]
+
       classify_state @states[state]
     end
 
@@ -121,9 +125,13 @@ module Ferro
     # @param [String] state The state name
     def classify_state(state)
       if state[1]
-        `#{element}.classList.add(#{state[0]})`
+        state[0].each do |name|
+          `#{element}.classList.add(#{name})`
+        end
       else
-        `#{element}.classList.remove(#{state[0]})`
+        state[0].each do |name|
+          `#{element}.classList.remove(#{name})`
+        end
       end
     end
 

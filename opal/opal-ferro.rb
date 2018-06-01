@@ -1,6 +1,7 @@
 require 'opal'
 require 'opal-ferro/ferro_elementary'
 require 'opal-ferro/ferro_base_element'
+require 'opal-ferro/ferro_compositor'
 require 'opal-ferro/ferro_document'
 require 'opal-ferro/ferro_factory'
 require 'opal-ferro/ferro_router'

@@ -12,10 +12,14 @@ module Ferro
 
     include Elementary
 
+    attr_reader :sym, :children, :compositor
+
     # Create the document and start the creation
     # process (casading).
     def initialize
-      @children = {}
+      @compositor = nil
+      @sym        = :document
+      @children   = {}
       creation
     end
 
@@ -31,7 +35,7 @@ module Ferro
 
     # Returns the one and only instance of the factory.
     def factory
-      @factory ||= Factory.new
+      @factory ||= Factory.new(self, @compositor)
     end
 
     # The document class is the root element.
@@ -42,6 +46,20 @@ module Ferro
     # The document class is a component.
     def component
       self
+    end
+
+    # Returns the domtype of the document instance.
+    def domtype
+      :body
+    end
+
+    # Switch to a new theme for the compositor,
+    # this will remove/add CSS classes for all
+    # elements as needed.
+    #
+    # param [Symbol] theme The new theme name
+    def switch_compositor_theme(theme)
+      @compositor.switch_theme(self, theme) if @compositor
     end
 
     # Returns the one and only instance of the router.

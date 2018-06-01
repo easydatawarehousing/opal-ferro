@@ -97,6 +97,20 @@ module Ferro
       @children.delete(sym)
     end
 
+    # Recursively iterate all child elements
+    #
+    # param [Block] block A block to execute for every child element
+    #                     and the element itself
+    def each_child(&block)
+      if block_given?
+        block.call self
+
+        @children.each do |_, child|
+          child.each_child(&block)
+        end
+      end
+    end
+
     # Remove a DOM element.
     def destroy
       `#{parent.element}.removeChild(#{element})`

@@ -15,6 +15,7 @@ just beautiful and simple Ruby code. Front-End-Ruby-ROcks!
 * [Creation lifecycle](#lifecycle)
 * [Navigating the Master Object Model](#navigating)
 * [Styling Ferro elements](#styling)
+* [Using a compositor to style elements](#compositor)
 * [More information](#more)
 
 <a name="ferro"></a>
@@ -173,6 +174,48 @@ two classnames. One matching the Ruby classname `DemoButton` and
 one for its Ruby superclass `FerroFormButton`.
 These classnames are _dasherized_. In CSS you can reference these
 classnames as `demo-button` and `ferro-form-button`.
+
+<a name="compositor"></a>
+
+## Using a compositor to style elements
+
+There is alternative way to add styling to generated DOM objects.
+In your `Document` you can set a `Compositor` object.
+A compositor maps Ruby class names to a list of CSS class names.
+When a Ferro object is created its class name is looked up in the
+compositor mapping. If found the list of CSS classes will be added
+to the corresponding DOM element.  
+The mapping is simply a Ruby Hash. The keys are Ruby class names,
+the values are CSS class names.  
+Optionally you can use the theme parameter to create different
+mappings per theme. Use the `Document.switch_compositor_theme`
+method to switch themes at run time.  
+Add the compositor like this:
+
+    class Document < Ferro::Document
+      def before_create
+        @compositor = AppCompositor.new :dark
+      end
+    end
+
+The theme parameter is optional. A simple mapping might look like this:
+
+    class MyCompositor < Ferro::Compositor
+
+      def map(theme)
+        m = {
+          'Document' => %w{black bg-white sans-serif},
+          'Banner'   => %w{w-100},
+        }
+        
+        if theme == :dark
+          m['Document'] = %w{white bg-black sans-serif}
+        end
+
+        m
+      end
+    end
+
 
 <a name="more"></a>
 
