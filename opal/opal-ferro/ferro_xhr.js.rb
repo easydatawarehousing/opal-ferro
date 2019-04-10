@@ -76,6 +76,7 @@ module Ferro
       `#{@xhr}.open(#{@method}, #{@url}, true)`
       `#{@xhr}.timeout = #{@timeout}`
       `#{@xhr}.setRequestHeader('Accept', #{@accept})`
+      `#{@xhr}.setRequestHeader('X-Requested-With', 'XMLHttpRequest')`
 
       if @method != 'GET'
         `#{@xhr}.setRequestHeader('X-CSRF-Token', #{csrf_token})`
