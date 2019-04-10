@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   s.require_paths = ['lib']
 
-  s.add_dependency 'opal', '~> 0.10'
+  s.add_dependency 'opal', '~> 0.11'
 
   s.add_development_dependency 'bundler',  '~> 1.16'
   s.add_development_dependency 'rake',     '~> 10.0'
