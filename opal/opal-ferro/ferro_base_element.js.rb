@@ -126,11 +126,11 @@ module Ferro
     def classify_state(state)
       if state[1]
         state[0].each do |name|
-          `#{element}.classList.add(#{name})`
+          `#{@element}.classList.add(#{name})`
         end
       else
         state[0].each do |name|
-          `#{element}.classList.remove(#{name})`
+          `#{@element}.classList.remove(#{name})`
         end
       end
     end
@@ -157,6 +157,14 @@ module Ferro
       `#{@element}.textContent`
     end
 
+    # Set the current html value of the element
+    # Useful for input elements
+    #
+    # @param [String] The new value
+    def value=(value)
+      `#{@element}.value = #{value}`
+    end
+
     # Set the current text content of the element
     #
     # @param [String] value The new text value
@@ -179,9 +187,9 @@ module Ferro
     # @param [String] value The attribute value
     def set_attribute(name, value)
       if name == 'scrollTop'
-        `#{element}.scrollTop=#{value}`
+        `#{@element}.scrollTop=#{value}`
       else
-        `#{element}.setAttribute(#{name}, #{value})`
+        `#{@element}.setAttribute(#{name}, #{value})`
       end
     end
 
@@ -189,7 +197,14 @@ module Ferro
     #
     # @param [String] name The attribute name
     def remove_attribute(name)
-      `#{element}.removeAttribute(#{name})`
+      `#{@element}.removeAttribute(#{name})`
+    end
+
+    # Get the id of the elements corresponding DOM element
+    #
+    # @return [String] The id
+    def dom_id
+      "_#{self.object_id}"
     end
   end
 end

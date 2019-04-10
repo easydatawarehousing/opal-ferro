@@ -35,9 +35,9 @@ module Ferro
     end
 
     # Internal method to get mapping from selected map.
-    def css_classes_for_map(classname, map)
-      css = map[classname]
-      css.class == String ? css_classes_for_map(css, map) : (css || [])
+    def css_classes_for_map(classname, mapping)
+      css = mapping[classname]
+      css.class == String ? css_classes_for_map(css, mapping) : (css || [])
     end
 
     # Internal method to switch to a new theme.
