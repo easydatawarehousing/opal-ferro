@@ -35,22 +35,24 @@ module Ferro
         `#{parent.element}.appendChild(#{element})`
       end
 
-      # Add ruby class to the node
-      `#{element}.classList.add(#{dasherize(target.class.name)})`
+      if !@compositor
+        # Add ruby class to the node
+        `#{element}.classList.add(#{dasherize(target.class.name)})`
 
-      # Add ruby superclass to the node to allow for more generic styling
-      if target.class.superclass != BaseElement
-        `#{element}.classList.add(#{dasherize(target.class.superclass.name)})`
+        # Add ruby superclass to the node to allow for more generic styling
+        if target.class.superclass != BaseElement
+          `#{element}.classList.add(#{dasherize(target.class.superclass.name)})`
+        end
+      else
+        # Add classes defined by compositor
+        composite_classes(target, element, target.class.superclass != BaseElement)
       end
-
-      # Add classes defined by compositor
-      composite_classes(target, element, target.class.superclass != BaseElement)
 
       # Set ruby object_id as default element id
       if !options.has_key?(:id)
-        `#{element}.id = #{target.object_id}`
+        `#{element}.id = '_' + #{target.object_id}`
       end
-          
+
       # Set attributes
       options.each do |name, value|
         case name
