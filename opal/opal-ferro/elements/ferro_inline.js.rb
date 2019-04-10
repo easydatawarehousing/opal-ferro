@@ -146,5 +146,25 @@ module Ferro
         @options[:target] ||= '_blank'
       end
     end
+
+    # Creates a button (see form elements for 'input type: button').
+    # In the DOM creates a: <input type='button'>.
+    class Button < BaseElement
+
+      # Internal method.
+      def _before_create
+        @domtype = :button
+      end
+
+      # Internal method.
+      def _after_create
+        `#{@element}.addEventListener("click",function(e){#{clicked};document.activeElement.blur()})`
+        super
+      end
+
+      # Override this method to define what happens after
+      # element has been clicked.
+      def clicked;end
+    end
   end
 end

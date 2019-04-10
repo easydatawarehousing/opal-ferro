@@ -32,12 +32,12 @@ module Ferro
         @disabled = option_replace :disabled, false
       end
 
-      # Setter method for input value.
+      # Getter method for input value.
       def value
         `#{@element}.value`
       end
 
-      # Getter method for input value.
+      # Setter method for input value.
       def value=(value)
         `#{@element}.value = #{value}`
       end

@@ -1,6 +1,6 @@
 module Ferro
   module Element
-    # Creates a miscellaneous element.
+    # Creates an image element.
     # In the DOM creates a: <img>.
     # Will be changed to use <figure> and <figcaption>
     # Specify option :src to set the source url.
@@ -13,7 +13,17 @@ module Ferro
       end
     end
 
-    # Creates a miscellaneous element.
+    # Creates a video element.
+    # In the DOM creates a: <canvas>.
+    class Video < BaseElement
+
+      # Internal method.
+      def _before_create
+        @domtype = :video
+      end
+    end
+
+    # Creates a canvas element.
     # In the DOM creates a: <canvas>.
     class Canvas < BaseElement
 
