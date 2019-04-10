@@ -1,3 +1,13 @@
+# 0.11.0 - April 10, 2019
+
+[0.11.0]: https://github.com/easydatawarehousing/opal-ferro/compare/v0.10.2...v0.11.0
+
+- Dont add ruby classnames to DOM elements when using the style compositor
+- Add underscore prefix to dom id's to ensure id's are strings
+- Added dom_id and value= methods
+- Added button and video elements
+- Updated opal version to 0.11+
+
 # 0.10.2 - June 1, 2018
 
 [0.10.2]: https://github.com/easydatawarehousing/opal-ferro/compare/v0.10.1...v0.10.2
