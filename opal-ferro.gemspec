@@ -25,9 +25,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'opal', '~> 0.11'
 
-  s.add_development_dependency 'bundler',  '~> 1.16'
-  s.add_development_dependency 'rake',     '~> 10.0'
-  s.add_development_dependency 'yard',     '~> 0.9.12'
-  s.add_development_dependency 'minitest', '~> 5.0'
+  s.add_development_dependency 'bundler'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'yard',     '~> 0.9.19'
+  s.add_development_dependency 'minitest'
   # s.add_development_dependency 'selenium-webdriver', '~> 3.8'
 end
