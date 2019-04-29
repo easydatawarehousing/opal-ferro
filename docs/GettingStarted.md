@@ -216,6 +216,8 @@ The theme parameter is optional. A simple mapping might look like this:
       end
     end
 
+An example of a compositor can be found
+[here](https://github.com/easydatawarehousing/ferro-example-todolist-compositor).
 
 <a name="more"></a>
 
