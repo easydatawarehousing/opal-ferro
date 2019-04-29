@@ -37,6 +37,17 @@ module Ferro
 
     # Creates a semantical element.
     # This is a component.
+    # In the DOM creates a: <main>.
+    class Main < Base
+
+      # Internal method.
+      def _before_create
+        @domtype = :main
+      end
+    end
+
+    # Creates a semantical element.
+    # This is a component.
     # In the DOM creates a: <section>.
     class Section < Base
 
