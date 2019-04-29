@@ -12,3 +12,5 @@ require 'opal-ferro/elements/ferro_components'
 require 'opal-ferro/elements/ferro_form'
 require 'opal-ferro/elements/ferro_misc'
 require 'opal-ferro/elements/ferro_combos'
+
+# I18n is optional so not required here

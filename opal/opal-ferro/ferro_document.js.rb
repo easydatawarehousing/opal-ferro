@@ -7,7 +7,8 @@ module Ferro
   # from FerroDocument in an application.
   # This class attaches itself to the DOM
   # `document.body` object.
-  # Any existing child nodes of `document.body` are removed.
+  # All existing child nodes of `document.body` are removed,
+  # except <template> elements.
   class Document
 
     include Elementary

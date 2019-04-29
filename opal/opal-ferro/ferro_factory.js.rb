@@ -12,7 +12,7 @@ module Ferro
     def initialize(target, compositor)
       @compositor = compositor
       @body = `document.body`
-      `while (document.body.firstChild) {document.body.removeChild(document.body.firstChild);}`
+      `for (let item of document.body.children){if (item.nodeName!='TEMPLATE'){document.body.removeChild(item);}}`
       composite_classes(target, @body, false)
     end
 
